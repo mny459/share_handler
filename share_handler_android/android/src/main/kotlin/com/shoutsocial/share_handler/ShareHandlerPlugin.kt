@@ -171,15 +171,6 @@ class ShareHandlerPlugin: FlutterPlugin, Messages.ShareHandlerApi, EventChannel.
           null
         }
       }
-      (intent.type == null || intent.type?.startsWith("text") == true)
-              && intent.action == Intent.ACTION_PROCESS_TEXT -> { // Sharing text
-        text = intent.getStringExtra(Intent.EXTRA_PROCESS_TEXT)
-        attachments = if (text == null) {
-          attachmentsFromIntent(intent)
-        } else {
-          null
-        }
-      }
       intent.action == Intent.ACTION_VIEW -> { // Opening URL
         attachments = null
         text = intent.dataString
